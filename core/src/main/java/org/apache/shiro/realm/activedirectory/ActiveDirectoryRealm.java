@@ -108,7 +108,8 @@ public class ActiveDirectoryRealm extends AbstractLdapRealm {
         // Binds using the username and password provided by the user.
         LdapContext ctx = null;
         try {
-            ctx = ldapContextFactory.getLdapContext(getUsernameWithSuffix(upToken.getUsername()), String.valueOf(upToken.getPassword()));
+            ctx = ldapContextFactory.getLdapContext(getUsernameWithSuffix(upToken.getUsername()), 
+                    String.valueOf(upToken.getPassword()));
         } finally {
             LdapUtils.closeContext(ctx);
         }
@@ -235,7 +236,7 @@ public class ActiveDirectoryRealm extends AbstractLdapRealm {
     protected String getUsernameWithSuffix(String username) {
         if (principalSuffix != null
                 && !username.toLowerCase(Locale.ROOT).endsWith(principalSuffix.toLowerCase(Locale.ROOT))) {
-            return username += principalSuffix;
+            return username + principalSuffix;
         }
         return username;
     }
