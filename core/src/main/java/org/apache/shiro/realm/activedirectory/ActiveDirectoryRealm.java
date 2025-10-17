@@ -108,7 +108,7 @@ public class ActiveDirectoryRealm extends AbstractLdapRealm {
         // Binds using the username and password provided by the user.
         LdapContext ctx = null;
         try {
-            ctx = ldapContextFactory.getLdapContext(getUsernameWithSuffix(upToken.getUsername()), 
+            ctx = ldapContextFactory.getLdapContext(getUsernameWithSuffix(upToken.getUsername()),
                     String.valueOf(upToken.getPassword()));
         } finally {
             LdapUtils.closeContext(ctx);
